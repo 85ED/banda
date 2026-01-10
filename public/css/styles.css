@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@400;700&display=swap');
 
-/* Reset e Base */
 * {
     margin: 0;
     padding: 0;
@@ -19,7 +18,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Tipografia — Bebas Neue aplicada em elementos-chave (sem alterar cores/espaçamentos) */
 .band-name,
 .nav-link,
 .section-title,
@@ -39,7 +37,6 @@ body {
     padding: 0 20px;
 }
 
-/* Header */
 .header {
     position: fixed;
     top: 0;
@@ -127,7 +124,7 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Hero Section */
+
 .hero {
     height: 100vh;
     display: flex;
@@ -140,7 +137,6 @@ body {
     overflow: hidden;
 }
 
-/* Slideshow de imagens de fundo */
 .hero::after {
     content: '';
     position: absolute;
@@ -276,7 +272,6 @@ body {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
-/* Botões CTA do Hero */
 .hero-cta {
     display: flex;
     gap: 1.5rem;
@@ -352,7 +347,7 @@ body {
     transform: rotate(45deg);
 }
 
-/* Sections */
+
 .section-title {
     font-size: 2.5rem;
     text-align: center;
@@ -372,7 +367,6 @@ body {
     background: #f5d000;
 }
 
-/* Repert\u00f3rios */
 .repertorios {
     padding: 3.5rem 0;
     background: linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 50%, #0a0a0a 100%);
@@ -711,7 +705,7 @@ body {
     width: 100%;
 }
 
-/* Estilos variados para criar efeito de nuvem */
+
 .song-item:nth-child(odd) {
     color: #ffffff;
 }
@@ -729,7 +723,7 @@ body {
     font-style: italic;
 }
 
-/* Integrantes */
+
 .integrantes {
     padding: 3.5rem 0;
     background: #111111;
@@ -782,7 +776,7 @@ body {
     font-weight: 500;
 }
 
-/* Agenda */
+
 .agenda {
     padding: 3.5rem 0;
     background: #0a0a0a;
@@ -864,7 +858,7 @@ body {
     background: #f5d000;
 }
 
-/* Redes Sociais */
+
 .redes-sociais {
     padding: 3.5rem 0;
     background: #111111;
@@ -924,7 +918,7 @@ body {
     background: #f5d000;
 }
 
-/* Contato */
+
 .contato {
     padding: 3.5rem 0;
     background: #0a0a0a;
@@ -1001,7 +995,7 @@ body {
     box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
 }
 
-/* Footer */
+
 .footer {
     background: #000000;
     padding: 2rem 0;
@@ -1037,7 +1031,30 @@ body {
     color: #666666;
 }
 
-/* Animations */
+@media (max-width: 768px) {
+    .footer .footer-content {
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        text-align: right;
+        gap: 0.5rem;
+    }
+    .footer .footer-left {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .footer .footer-right {
+        width: 100%;
+        align-items: flex-end;
+        text-align: right;
+    }
+    .footer-content p {
+        margin-bottom: 0.3rem;
+    }
+}
+
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -1061,7 +1078,7 @@ body {
     }
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
