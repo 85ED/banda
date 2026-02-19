@@ -259,3 +259,79 @@ window.addEventListener('scroll', () => {
         }
     });
 });
+
+
+// Função para copiar link da agenda
+function copyAgendaLink() {
+    const agendaUrl = `${window.location.origin}${window.location.pathname}#agenda`;
+    
+    // Tenta usar a API moderna de clipboard
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(agendaUrl).then(() => {
+            showCopyFeedback(true);
+        }).catch(() => {
+            fallbackCopyTextToClipboard(agendaUrl);
+        });
+    } else {
+        // Fallback para navegadores mais antigos
+        fallbackCopyTextToClipboard(agendaUrl);
+    }
+}
+
+// Método alternativo para copiar texto
+function fallbackCopyTextToClipboard(text) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed";
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.width = "2em";
+    textArea.style.height = "2em";
+    textArea.style.padding = "0";
+    textArea.style.border = "none";
+    textArea.style.outline = "none";
+    textArea.style.boxShadow = "none";
+    textArea.style.background = "transparent";
+    
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+        const successful = document.execCommand('copy');
+        showCopyFeedback(successful);
+    } catch (err) {
+        showCopyFeedback(false);
+    }
+    
+    document.body.removeChild(textArea);
+}
+
+// Mostra feedback visual ao copiar
+function showCopyFeedback(success) {
+    const button = document.querySelector('.copy-agenda-link');
+    const originalText = button.innerHTML;
+    
+    if (success) {
+        button.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+            Link copiado!
+        `;
+        button.style.background = '#4CAF50';
+    } else {
+        button.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+            Erro ao copiar
+        `;
+        button.style.background = '#f44336';
+    }
+    
+    setTimeout(() => {
+        button.innerHTML = originalText;
+        button.style.background = '';
+    }, 2000);
+}

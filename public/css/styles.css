@@ -782,20 +782,64 @@ body {
     background: #0a0a0a;
 }
 
+.agenda-subtitle {
+    text-align: center;
+    color: #cccccc;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.copy-agenda-link {
+    background: #f5d000;
+    color: #000000;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.copy-agenda-link svg {
+    width: 18px;
+    height: 18px;
+}
+
+.copy-agenda-link:hover {
+    background: #f5e050;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(245, 208, 0, 0.3);
+}
+
+.copy-agenda-link:active {
+    transform: translateY(0);
+}
+
 .shows-list {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
 .show-item {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     background: #1a1a1a;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     padding: 1.5rem;
     border-radius: 10px;
     border-left: 4px solid #f5d000;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .show-item:hover {
@@ -811,52 +855,115 @@ body {
     color: #000000;
     padding: 1rem;
     border-radius: 8px;
-    margin-right: 2rem;
     min-width: 80px;
+    height: fit-content;
 }
 
 .show-date .day {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: bold;
+    line-height: 1;
 }
 
 .show-date .month {
     font-size: 0.9rem;
+    text-transform: uppercase;
 }
 
 .show-info {
     flex: 1;
+    min-width: 250px;
 }
 
 .show-info h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
     color: #ffffff;
 }
 
-.show-info p {
+.show-address {
     color: #cccccc;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    line-height: 1.5;
+}
+
+.location-icon,
+.time-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    opacity: 0.8;
 }
 
 .show-time {
     color: #f5d000;
-    font-weight: 500;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.show-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: stretch;
+    min-width: 140px;
 }
 
 .show-link {
     background: #f5d000;
     color: #000000;
-    padding: 0.8rem 1.5rem;
+    padding: 0.7rem 1.2rem;
     text-decoration: none;
     border-radius: 5px;
-    font-weight: 500;
-    transition: background 0.3s ease;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.show-link svg {
+    width: 16px;
+    height: 16px;
 }
 
 .show-link:hover {
-    background: #f5d000;
+    background: #f5e050;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(245, 208, 0, 0.3);
 }
+
+.show-link-map {
+    background: #f5d000;
+    color: #000000;
+}
+
+.show-link-map:hover {
+    background: #f5e050;
+    box-shadow: 0 4px 10px rgba(245, 208, 0, 0.4);
+}
+
+.show-link-info {
+    background: #f5d000;
+    color: #000000;
+}
+
+.show-link-info:hover {
+    background: #f5e050;
+    box-shadow: 0 4px 10px rgba(245, 208, 0, 0.4);
+}
+
 
 
 .redes-sociais {
@@ -1170,15 +1277,51 @@ body {
         gap: 1.5rem;
     }
     
+    .agenda-subtitle {
+        flex-direction: column;
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .copy-agenda-link {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+    }
+
     .show-item {
         flex-direction: column;
+        align-items: center;
         text-align: center;
         gap: 1rem;
+        padding: 1.2rem;
     }
     
     .show-date {
-        margin-right: 0;
-        margin-bottom: 1rem;
+        width: 100%;
+        max-width: 120px;
+    }
+
+    .show-info {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .show-address {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .show-time {
+        justify-content: center;
+    }
+
+    .show-actions {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .show-link {
+        width: 100%;
     }
     
     .social-links {
