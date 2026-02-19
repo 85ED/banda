@@ -335,3 +335,23 @@ function showCopyFeedback(success) {
         button.style.background = '';
     }, 2000);
 }
+
+function markPastEvents() {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    
+    const showItems = document.querySelectorAll('.show-item[data-date]');
+    
+    showItems.forEach(item => {
+        const eventDateStr = item.getAttribute('data-date');
+        if (eventDateStr) {
+            const eventDate = new Date(eventDateStr + 'T23:59:59');
+            
+            if (eventDate < today) {
+                item.classList.add('past-event');
+            }
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', markPastEvents);

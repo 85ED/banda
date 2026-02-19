@@ -827,6 +827,31 @@ body {
 .shows-list {
     max-width: 900px;
     margin: 0 auto;
+    max-height: none;
+}
+
+.shows-list:has(.show-item:nth-child(5)) {
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.shows-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.shows-list::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 4px;
+}
+
+.shows-list::-webkit-scrollbar-thumb {
+    background: #f5d000;
+    border-radius: 4px;
+}
+
+.shows-list::-webkit-scrollbar-thumb:hover {
+    background: #d4b600;
 }
 
 .show-item {
@@ -837,14 +862,52 @@ body {
     padding: 1.5rem;
     border-radius: 10px;
     border-left: 4px solid #f5d000;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
     gap: 1.5rem;
     flex-wrap: wrap;
+    position: relative;
 }
 
 .show-item:hover {
     transform: translateX(10px);
     box-shadow: 0 5px 20px rgba(245, 208, 0, 0.2);
+}
+
+.show-item.past-event {
+    filter: blur(1px) grayscale(60%);
+    opacity: 0.5;
+    border-left-color: #666;
+    pointer-events: none;
+}
+
+.show-item.past-event::after {
+    content: 'ENCERRADO';
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: #999;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 1px solid #666;
+    z-index: 10;
+}
+
+.show-item.past-event:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.show-item.past-event .show-date {
+    background: #666;
+    color: #333;
+}
+
+.show-item.past-event .show-time {
+    color: #666;
 }
 
 .show-date {
